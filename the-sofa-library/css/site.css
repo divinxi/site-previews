@@ -45,38 +45,55 @@ ul { padding: 0; }
 /* draft bar */
 .draft { margin: 0; background: var(--stone); color: #444; font-size: 12px; line-height: 1.4; padding: 4px var(--gut); text-align: center; }
 
-/* header */
-.site-head { background: var(--paper); border-bottom: 1px solid var(--line); }
-.head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 14px; padding-bottom: 12px; }
-.brand { text-decoration: none; color: var(--ink); display: flex; flex-direction: column; min-width: 0; }
-.brand-name { font: 500 1.25rem/1.1 var(--head); letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
-.brand-sub { font: 400 .68rem/1.4 var(--head); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 4px; }
-.head-tel { display: inline-flex; flex-direction: column; align-items: flex-end; text-decoration: none; color: var(--ink); font-family: var(--head); line-height: 1.2; padding: 6px 0 6px 8px; }
-.head-tel .lbl { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-.head-tel .num { font-size: 1rem; font-weight: 500; color: var(--accent-dark); white-space: nowrap; }
-.site-nav { background: var(--charcoal); }
-.site-nav ul { list-style: none; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.site-nav ul::-webkit-scrollbar { display: none; }
-.site-nav li { flex: 0 0 auto; }
-.site-nav a { display: block; padding: 14px 12px; min-height: 48px; color: #f2f2f2; text-decoration: none; font: 400 .82rem/20px var(--head); letter-spacing: .1em; text-transform: uppercase; border-bottom: 3px solid transparent; }
-.site-nav li:first-child a { padding-left: 0; }
+/* header: their logo is white lettering on #353535, so the header uses that exact colour */
+.site-head { background: #353535; color: #e8e8e6; }
+.head-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: block; flex: 0 0 auto; line-height: 0; }
+.brand img { width: 205px; height: 94px; max-width: none; }
+.brand-sub { display: none; margin: 0; font: 400 .75rem/1.4 var(--head); letter-spacing: .14em; text-transform: uppercase; color: #bdbdba; }
+.head-tel { display: inline-flex; flex-direction: column; align-items: flex-end; text-decoration: none; color: #fff; font-family: var(--head); line-height: 1.2; padding: 8px 0 8px 8px; }
+.head-tel .lbl { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: #bdbdba; }
+.head-tel .num { font-size: 1rem; font-weight: 500; color: #fff; white-space: nowrap; }
+.head-tel:hover .num { text-decoration: underline; }
+.site-nav { background: #353535; border-top: 1px solid #4d4d4a; }
+.site-nav ul { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.site-nav a { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 48px; padding: 6px 4px; color: #f2f2f2; text-decoration: none; font: 400 .8rem/1.2 var(--head); border-bottom: 3px solid transparent; }
 .site-nav a:hover { color: #fff; border-bottom-color: #888; }
 .site-nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--accent); }
 .site-nav a:focus-visible { outline-color: #fff; outline-offset: -3px; }
-@media (max-width: 899px) {
-  .site-nav { position: relative; }
-  .site-nav::after { content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 32px; background: linear-gradient(90deg, rgba(54,54,50,0), var(--charcoal)); pointer-events: none; }
+@media (min-width: 700px) {
+  .brand-sub { display: block; flex: 1; padding-left: 8px; }
+  .head-tel .num { font-size: 1.25rem; }
 }
 @media (min-width: 900px) {
-  .brand-name { font-size: 1.7rem; }
-  .brand-sub { font-size: .75rem; }
-  .head-tel .num { font-size: 1.25rem; }
-  .site-nav ul { justify-content: space-between; }
+  .site-nav ul { display: flex; justify-content: space-between; }
+  .site-nav li:first-child a { padding-left: 0; }
+  .site-nav a { padding: 12px 10px; font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; }
 }
-@media (max-width: 380px) {
-  .brand-name { font-size: 1.05rem; letter-spacing: .16em; }
-  .head-tel .lbl { display: none; }
+@media (max-width: 360px) { .site-nav a { font-size: .74rem; } .head-tel .lbl { display: none; } }
+
+/* category banner heads */
+.banner-head { background: var(--mist); margin-top: 14px; }
+.banner-grid { display: grid; gap: 0; padding-left: 0; padding-right: 0; }
+.banner-img { margin: 0; }
+.banner-img img { width: 100%; }
+.banner-txt { padding: 20px var(--gut) 24px; }
+@media (min-width: 900px) {
+  .banner-grid { grid-template-columns: auto 1fr; gap: 44px; align-items: center; padding-left: var(--gut); padding-right: var(--gut); }
+  .banner-img img { width: auto; }
+  .banner-txt { padding: 28px 0; }
 }
+.section-tight { padding-top: 28px; }
+.card-title { display: block; margin-top: 10px; font-size: .95rem; line-height: 1.35; color: var(--ink); }
+.card a:hover .card-title { color: var(--accent-dark); }
+.price-line { font-weight: 600; color: var(--ink); margin-bottom: 1.2rem; }
+.sale-note { font-size: .9rem; color: var(--muted); margin: -0.4rem 0 1.2rem; }
+.sale-note span { font: 500 .7rem/1 var(--head); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-right: 4px; }
+.hotels { border-bottom: 1px solid var(--line); }
+.hotels-grid { display: grid; gap: 4px 32px; padding-top: 22px; padding-bottom: 22px; }
+.hotels-k { margin: 0; font: 500 .75rem/1.4 var(--head); letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.hotels-q { margin: 0; font: 400 clamp(1.15rem, 3.2vw, 1.55rem)/1.35 var(--head); color: var(--ink); max-width: 46ch; }
+@media (min-width: 900px) { .hotels-grid { grid-template-columns: 200px 1fr; align-items: baseline; padding-top: 30px; padding-bottom: 30px; } }
 
 /* breadcrumb */
 .crumbs ol { list-style: none; margin: 0; padding: 14px 0 0; display: flex; flex-wrap: wrap; gap: 4px; font-size: .85rem; color: var(--muted); }

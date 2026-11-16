@@ -51,10 +51,4 @@
     });
   }
 
-  // Keep the current nav item in view on narrow screens.
-  var cur = document.querySelector('.site-nav a[aria-current="page"]');
-  if (cur && cur.scrollIntoView && window.innerWidth < 900) {
-    var ul = cur.closest("ul");
-    ul.scrollLeft = cur.offsetLeft - 16;
-  }
 })();
